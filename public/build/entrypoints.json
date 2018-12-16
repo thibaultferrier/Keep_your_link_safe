@@ -1,0 +1,43 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "build/runtime.js",
+        "build/app.js"
+      ],
+      "css": [
+        "build/app.css"
+      ]
+    },
+    "logo": {
+      "js": [
+        "build/runtime.js",
+        "build/logo.js"
+      ]
+    },
+    "accueil": {
+      "js": [
+        "build/runtime.js",
+        "build/accueil.js"
+      ]
+    },
+    "ajout_lien": {
+      "js": [
+        "build/runtime.js",
+        "build/ajout_lien.js"
+      ]
+    },
+    "edit_lien": {
+      "js": [
+        "build/runtime.js",
+        "build/edit_lien.js"
+      ]
+    },
+    "modif_utilisateur": {
+      "js": [
+        "build/runtime.js",
+        "build/modif_utilisateur.js"
+      ]
+    }
+  }
+}

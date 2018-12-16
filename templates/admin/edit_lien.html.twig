@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id="ajout_lien" class="col-md-6 ">
+
+        <span class="titre">
+            <h1><u>Editer {{ Lien.titre }}</u></h1>
+        </span>
+
+
+        {{ form_start(Form) }}
+
+            <div class="form-group invisible">
+                {{ form_row(Form.Id) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.titre, {attr: {class: 'form-control',value:Lien.titre} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.Description, {attr: {class: 'form-control',placeholder:Lien.Description} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.URL, {attr: {class: 'form-control',value:Lien.URL} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.TAGS, {attr: {class: 'form-control',placeholder:Lien.TAGS} }) }}
+                <p class="para_rouge">Merci de renseigner les TAGS à nouveau</p>
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.save, {attr: {class: 'btn btn-primary'} }) }}
+            </div>
+
+        {{ form_end(Form) }}
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset("http://code.jquery.com/jquery-latest.min.js") }}"></script>
+    <script src="{{ asset('build/edit_lien.js') }}"></script>
+    <script src="{{ asset('build/runtime.js') }}"></script>
+
+{% endblock %}

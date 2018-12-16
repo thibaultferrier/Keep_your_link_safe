@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{% block title %}Keep your link in mind{% endblock %}</title>
+
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="build/app.css">
+            <!--ICONS -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+            <!-- FONTS !! -->
+            <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+
+        {% endblock %}
+
+
+
+
+    </head>
+    <body>
+
+        {% block sidebar %}
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand navbar-light fixed-top">
+                <div class="container text-center">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse align-self-md-center col-xs-12" id="navbarResponsive">
+                        <ul class="nav navbar-nav">
+
+                            <li class="nav-item {{ app.request.get('_route') == 'accueil' ? 'active' }}">
+                                <a class="nav-link" href="{{ path('accueil') }}">
+                                    <i class="fas fa-home big" >
+                                    </i>
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{ app.request.get('_route') == 'recherche' ? 'active' }}">
+                                <a class="nav-link" href="{{ path('recherche') }}">
+                                    <i class="fas fa-search big">
+                                    </i>
+                                </a>
+                            </li>
+                            <!--si on est co et admin on va en ajout_lien-->
+                            {% if app.user and ("ROLE_ADMIN" in app.user.Roles()) %}
+                                <li class="nav-item {{ app.request.get('_route') == 'ajout_lien' ? 'active' }} {{ app.request.get('_route') == 'edit_lien' ? 'active' }}">
+                                    <a class="nav-link" href="{{ path('ajout_lien') }}">
+                                        <i class="fas fa-plus-circle big">
+                                        </i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+
+                            <li>
+                                <a class="navbar-brand" href="./">
+                                    <img src="{{ asset('build/images/logo.png') }}" width="150">
+                                </a>
+                            </li>
+
+                            <!--si on est co et pas admin on va en ajout_lien-->
+                            {% if app.user and not("ROLE_ADMIN" in app.user.Roles()) %}
+                                <li class="nav-item {{ app.request.get('_route') == 'ajout_lien' ? 'active' }}">
+                                    <a class="nav-link" href="{{ path('ajout_lien') }}">
+                                        <i class="fas fa-plus-circle big">
+                                        </i>
+                                    </a>
+                                </li>
+
+                                <!--si on est pas co et  pas admin on va en connexion-->
+                            {% elseif not app.user  %}
+                                <li class="nav-item {{ app.request.get('_route') == 'ajout_lien' ? 'active' }}">
+                                    <a class="nav-link" href="{{ path('connexion') }}">
+                                        <i class="fas fa-plus-circle big">
+                                        </i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            <!--si on a un admin on affiche la gestion-->
+                            {% if app.user and ("ROLE_ADMIN" in app.user.Roles()) %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('admin') }}">
+                                        <i class="fas fa-users-cog big">
+                                        </i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            <!--si on a un utilisateur on va direct en déconnexion -->
+                            {% if app.user %}
+                                <li class="nav-item {{ app.request.get('_route') == 'connexion' ? 'active' }}">
+                                    <a class="nav-link" href="{{ path('deconnexion') }}">
+                                        <i class="fas fa-user big">
+                                        </i>
+                                    </a>
+                                </li>
+
+                            <!--sinon on va en connexion-->
+                            {% else %}
+
+                                <li class="nav-item {{ app.request.get('_route') == 'connexion' ? 'active' }}">
+                                    <a class="nav-link" href="{{ path('connexion') }}">
+                                        <i class="fas fa-user big">
+                                        </i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+
+        <footer class="page-footer font-small pt-4">
+
+            <div class="card navbar fixed-bottom">
+                <ul class="list-inline text-center" >
+                    <li class="list-inline-item">
+                        <a href="{{ path('accueil') }}" class="text-center">Keep your link in mind </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <span class="text-right">
+                            <a href="{{ path('rss') }}">
+                                <i class="fas fa-rss-square big"></i>
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </footer>
+
+        {% block javascripts %}
+
+
+            <script src="{{ asset("http://code.jquery.com/jquery-latest.min.js") }}"></script>
+            <script src="{{ asset('build/accueil.js') }}"></script>
+            <script src="{{ asset('build/runtime.js') }}"></script>
+
+        {% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <link>localhost:8000/rss</link>
+        <title>Keep your link safe</title>
+        <description>Save all you'll find while crawling the web</description>
+        <copyright>Copyright T. FERRIER J. DE DAPPER</copyright>
+
+        {% for lien in Liens %}
+
+            <item>
+                <title>{{ lien.Titre }}</title>
+                <description>{{ lien.Description }}</description>
+                <link>{{ lien.URL }}</link>
+            </item>
+
+        {% endfor %}
+    </channel>
+</rss>

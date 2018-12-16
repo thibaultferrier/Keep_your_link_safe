@@ -1,0 +1,136 @@
+/*!
+ * Start Bootstrap - 1 Col Portfolio (https://startbootstrap.com/template-overviews/1-col-portfolio)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-1-col-portfolio/blob/master/LICENSE)
+ */
+
+body {
+    padding-top: 54px;
+    font-family: 'Josefin Slab', serif;
+    color: black;
+}
+
+h1 {
+    font-family: 'Sorts Mill Goudy', serif;
+    font-size: 20pt;
+
+}
+
+
+span.titre{
+    text-align: end;
+}
+
+div.navbar-collapse {
+    height : 10%;
+}
+
+i.big {
+    font-size: 1.5em;
+    margin : 1em;
+}
+
+i.big:hover{
+    color: #0c5460;
+}
+
+.non-visible{
+    visibility: hidden;
+}
+
+.btn-tag{
+    color:white;
+    margin-left:5px;
+    padding:4px;
+}
+
+.bonjour {
+    margin-top : 4%;
+    margin-right : 30px;
+    float: right;
+}
+
+.pagination {
+    margin-bottom: 15px;
+    color: black;
+    justify-content: center;
+}
+
+
+.nav.navbar-nav {
+    margin: auto;
+    background: white;
+}
+
+
+.conn{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.para_rouge {
+    color: darkred;
+}
+
+
+li.nav-item:hover {
+    font-size: 1.5em;
+}
+
+
+button.button_search {
+    padding: 6px;
+    height: 38px;
+}
+
+ul.recherche {
+    margin-top: 60px;
+}
+
+
+
+#accueil_container {
+    margin-top: 10%;
+    padding-bottom: 10%;
+    display: block;
+}
+
+#recherche_container {
+    margin-top: 90px;
+    margin-bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 0;
+    display: inline;
+}
+
+#ajout_lien {
+    margin: auto;
+    padding-top: 8%;
+    overflow: auto;
+    padding-bottom: 10%;
+}
+
+#conn_container {
+    margin: 90px auto;
+    padding: 40px;
+    display: block;
+}
+
+#page_utilisateur_container {
+    margin: auto;
+    padding-top: 8%;
+    overflow: auto;
+    padding-bottom: 10%;
+
+}
+
+
+#field {
+    margin: 10px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}

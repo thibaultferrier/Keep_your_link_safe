@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div id="conn_container"  class="card card-container col-md-4">
+
+
+
+    {# sinon on propose la connexion   #}
+    <span class="titre">
+                <h1><u >Connexion</u></h1>
+    </span>
+
+    <form method="post">
+
+
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control conn" placeholder="Identifiant" required autofocus>
+        <input type="password" name="password" id="inputPassword" class="form-control conn" placeholder="Mot de passe" required>
+
+        {% if error %}
+            <div class="para_rouge">L'identifiant et/ou le mot de passe est incorrect</div>
+        {% endif %}
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}
+
+        <button class="btn btn-lg btn-primary btn-block btn-signin conn" type="submit">
+            Se connecter
+        </button>
+    </form>
+
+
+</div>
+
+{% endblock %}

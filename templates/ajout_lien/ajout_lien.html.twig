@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id="ajout_lien" class="col-md-6 ">
+
+        <span class="titre">
+            <h1><u>Ajouter un lien</u></h1>
+        </span>
+
+
+        {{ form_start(Form) }}
+
+            <div class="form-group">
+                {{ form_row(Form.titre, {attr: {class: 'form-control'} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.Description, {attr: {class: 'form-control'} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.URL, {attr: {class: 'form-control'} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.TAGS, {attr: {class: 'form-control'} }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(Form.save, {attr: {class: 'btn btn-primary'} }) }}
+            </div>
+
+        {{ form_end(Form) }}
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset("http://code.jquery.com/jquery-latest.min.js") }}"></script>
+    <script src="{{ asset('build/ajout_lien.js') }}"></script>
+    <script src="{{ asset('build/runtime.js') }}"></script>
+
+{% endblock %}

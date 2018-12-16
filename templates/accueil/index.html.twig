@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+    <!-- si user on affiche un petit message -->
+    {% if app.user %}
+        <p class="bonjour">Bonjour {{ app.user.username }} </p>
+    {% endif %}
+
+    <!-- si recherche on affiche la barre de recherche -->
+    {% if 'recherche' in app.request.get('_route')  %}
+        <div class="row" id="recherche_container">
+            <div class="col-md-12">
+                <div id="custom-search-input">
+                    <form action="{{ path('recherche') }}" method="get">
+                    <ul class="list-inline text-center recherche">
+                        <li class="list-inline-item">
+
+                            <div class="form-group col-md-12">
+                                <input name="q"
+                                       class="form-control search-field"
+                                       placeholder="Rechercher"
+                                       autocomplete="off"
+                                       autofocus
+                                       data-no-results-message="Aucun résultat"
+                                >
+                            </div>
+
+                        </li>
+                        <li class="list-inline-item">
+                            <span class="input-group-btn">
+                                <input type="submit" value="Rechercher" class="btn btn-primary button_search">
+                                 <a class="btn btn-danger button_search" type="button" id="fermer_recherche" href="{{ path('accueil') }}">
+                                    <i class="fas fa-times-circle "></i>
+                                </a>
+                            </span>
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    <!-- Page Content -->
+    <div class="container" id="accueil_container">
+
+        {% if Liens %}
+            {% for lien in Liens %}
+
+                <!-- gestion des differents projets -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class= "accordion" >{{ lien.Titre }}</h3>
+                        <div class="non-visible">
+                            <p>{{ lien.Description }}</p>
+                            <a class="btn btn-primary" href="http://{{ lien.URL }}">{{ lien.URL }}</a>
+                            <span class="badge badge-pill badge-secondary">{{ lien.TAGS }}</span>
+
+                            <!-- si admin on affiche les controles de liens -->
+                            {% if app.user and ("ROLE_ADMIN" in app.user.Roles()) %}
+                                <a class="btn btn-dark button_search" type="button" id="edit" href="{{ path('edit_lien', {'id': lien.ID}) }}">
+                                    <i class="fas fa-edit "></i>
+                                </a>
+                                <a class="btn btn-danger button_search" type="button" id="suppr" href="{{ path('suppr_lien', {'id': lien.ID}) }}">
+                                    <i class="fas fa-times-circle "></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <hr>
+            {% endfor %}
+        {% endif %}
+
+
+        {% if Liens is null %}
+            <div class="col-md-12 text-danger text-center">
+                <p>Aucun résultat !</p>
+                <br>
+                <iframe src="https://giphy.com/embed/3oEjHGrVGrqgFFknfO" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/comic-con-jack-sparrow-sdcc2016-3oEjHGrVGrqgFFknfO">via GIPHY</a></p>
+            </div>
+        {% endif %}
+
+        <!-- Pagination -->
+        <div class="text-xs-center">
+            {% if Liens %}
+                {{ knp_pagination_render(Liens) }}
+            {% endif %}
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
