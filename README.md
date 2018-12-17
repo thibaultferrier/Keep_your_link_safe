@@ -29,6 +29,6 @@ You need <a href="https://getcomposer.org/">Composer<a> to install PHP dependeci
 3- Run <code>npm install</code> to install Javascript dependencies <br>
 4- Run <code>npm run build</code> to generate assets <br>
 5- Run <code>php bin/console server:run</code> to launch Symfony <br>
-6- Go to <your server path>:8000 to use the application <br>
+6- Go to your_server_name:8000 to use the application <br>
 
 You may need to enable port 8000 if not already done.
